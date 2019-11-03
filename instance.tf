@@ -118,7 +118,7 @@ EOF
       "export EXOSCALE_KEY=\"${var.exoscale_key}\"",
       "export EXOSCALE_SECRET=\"${var.exoscale_secret}\"",
       "export EXOSCALE_ZONE=\"${var.exoscale_zone}\"",
-      "export BACKUP_BUCKET_NAME=\"${aws_s3_bucket.backup.bucket}\""
+      "export BACKUP_BUCKET_NAME=\"${aws_s3_bucket.backup.bucket}\"",
       "export DOMAIN=\"${local.domain_name}\"",
       "cd /srv/docker",
       "sudo docker-compose up -d",
