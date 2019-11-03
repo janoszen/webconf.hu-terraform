@@ -1,0 +1,57 @@
+---
+version: '3.2'
+services:
+  traefik:
+    image: webconf/traefik
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /srv/acme:/etc/traefik/acme
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    networks:
+      internal:
+        ipv4_address: 172.28.1.2
+  nginx:
+    image: webconf/nginx
+    labels:
+      traefik.enable: "true"
+      traefik.backend: "nginx"
+      traefik.frontend.rule: "Host:${DOMAIN}"
+      traefik.port: "80"
+      traefik.protocol: "http"
+      traefik.frontend.headers.SSLTemporaryRedirect: "false"
+      traefik.frontend.headers.SSLRedirect: "true"
+      traefik.frontend.headers.STSSeconds: "315360000"
+      traefik.frontend.headers.STSIncludeSubdomains: "true"
+      traefik.frontend.headers.STSPreload: "true"
+      traefik.frontend.headers.forceSTSHeader: "false"
+    restart: always
+    networks:
+      internal:
+        ipv4_address: 172.28.1.3
+  php:
+    image: webconf/php
+    networks:
+      internal:
+        ipv4_address: 172.28.1.4
+  backup:
+    image: webconf/backup
+    environment:
+      - "BACKUP_DEST=s3://${BACKUP_BUCKET_NAME}"
+      - "EXOSCALE_KEY=${EXOSCALE_KEY}"
+      - "EXOSCALE_SECRET=${EXOSCALE_SECRET}"
+      - "EXOSCALE_ZONE=${EXOSCALE_ZONE}"
+    volumes:
+      - /srv/acme:/srv/acme
+    networks:
+      internal:
+        ipv4_address: 172.28.1.5
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
