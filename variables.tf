@@ -15,7 +15,6 @@ variable "ssh_port" {
   default = 12222
 }
 
-
 variable "instance_type" {
   default = "Micro"
 }
@@ -32,5 +31,8 @@ locals {
   domain_name = "${var.server_hostname}.${var.server_domain}"
 }
 variable "container_version" {
-  default = "master-SNAPSHOT"
+  default = "0.0.1"
+}
+variable "dns_zone_name" {
+  default = "webconf.hu"
 }

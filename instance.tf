@@ -127,9 +127,9 @@ EOF
     ]
   }
 
-/*  lifecycle {
+  lifecycle {
     create_before_destroy = true
-  }*/
+  }
 
   depends_on = [
     "exoscale_security_group.web"
