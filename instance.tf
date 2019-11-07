@@ -122,7 +122,7 @@ EOF
       "export DOMAIN=\"${local.domain_name}\"",
       "export VERSION=\"${var.container_version}\"",
       "cd /srv/docker",
-      "sudo docker-compose up -d",
+      "sudo -E docker-compose up -d",
       "sudo userdel -f -r ubuntu"
     ]
   }

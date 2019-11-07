@@ -17,7 +17,7 @@ resource "tls_self_signed_cert" "ca" {
   subject {
     common_name  = "Magyar Webert Egyesulet CA"
     organization = "Magyar Webert Egyesulet"
-    country = "AT"
+    country = "HU"
   }
 }
 
@@ -32,7 +32,7 @@ resource "tls_cert_request" "web-ecdsa" {
   subject {
     common_name  = "${var.server_hostname}.${var.server_domain}"
     organization = "Magyar Webert Egyesulet"
-    country = "AT"
+    country = "HU"
   }
 }
 
@@ -61,7 +61,7 @@ resource "tls_cert_request" "web-rsa" {
   subject {
     common_name  = "${var.server_hostname}.${var.server_domain}"
     organization = "Magyar Webert Egyesulet"
-    country = "AT"
+    country = "HU"
   }
 }
 
