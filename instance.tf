@@ -22,7 +22,8 @@ resource "exoscale_compute" "web" {
   zone = "at-vie-1"
 
   security_groups = [
-    exoscale_security_group.web.name]
+    exoscale_security_group.web.name
+  ]
   ip6 = true
 
   user_data = <<EOF
@@ -120,6 +121,7 @@ EOF
       "export EXOSCALE_ZONE=\"${var.exoscale_zone}\"",
       "export BACKUP_BUCKET_NAME=\"${aws_s3_bucket.backup.bucket}\"",
       "export DOMAIN=\"${local.domain_name}\"",
+      "export VERSION=\"${var.container_version}\"",
       "cd /srv/docker",
       "sudo docker-compose up -d",
       "sudo userdel -f -r ubuntu"

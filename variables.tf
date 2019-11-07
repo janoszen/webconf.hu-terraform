@@ -31,3 +31,6 @@ variable "users" {
 locals {
   domain_name = "${var.server_hostname}.${server_domain}"
 }
+variable "container_version" {
+  default = "master-SNAPSHOT"
+}
