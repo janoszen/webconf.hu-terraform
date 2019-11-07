@@ -19,7 +19,8 @@ resource "exoscale_domain_record" "mx" {
   name        = "@"
   record_type = "MX"
   ttl         = 600
-  content     = "10 mx.opsbears.com."
+  prio        = 10
+  content     = "mx.opsbears.com."
 }
 
 resource "exoscale_domain_record" "dmarc" {
