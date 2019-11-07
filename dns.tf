@@ -3,7 +3,8 @@ resource "exoscale_domain_record" "no-www" {
   name        = "@"
   record_type = "A"
   ttl         = 60
-  content     = "${exoscale_compute.web.ip_address}"
+//  content     = "${exoscale_compute.web.ip_address}"
+  content     = "46.101.138.138"
 }
 
 resource "exoscale_domain_record" "www" {
@@ -11,7 +12,8 @@ resource "exoscale_domain_record" "www" {
   name        = "www"
   record_type = "A"
   ttl         = 60
-  content     = "${exoscale_compute.web.ip_address}"
+//  content     = "${exoscale_compute.web.ip_address}"
+  content     = "46.101.138.138"
 }
 
 resource "exoscale_domain_record" "mx" {
