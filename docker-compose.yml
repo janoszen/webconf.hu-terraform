@@ -11,8 +11,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - "BACKUP_URL=s3://${BACKUP_BUCKET_NAME}"
-      - "BACKUP_ENDPOINT=https://sos-${EXOSCALE_REGION}.exo.io"
-      - "BACKUP_BUCKETURL=%(bucket)s.sos-${EXOSCALE_REGION}.exo.io"
+      - "BACKUP_ENDPOINT=https://sos-${EXOSCALE_ZONE}.exo.io"
+      - "BACKUP_BUCKETURL=%(bucket)s.sos-${EXOSCALE_ZONE}.exo.io"
       - "EXOSCALE_KEY=${EXOSCALE_KEY}"
       - "EXOSCALE_SECRET=${EXOSCALE_SECRET}"
       - "EXOSCALE_ZONE=${EXOSCALE_ZONE}"
