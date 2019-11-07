@@ -30,7 +30,7 @@ resource "exoscale_domain_record" "dmarc" {
   content     = "v=DMARC1; p=none; rua=mailto:hostmaster@pasztormuvek.hu; adkim=r; aspf=r; sp=none"
 }
 
-resource "exoscale_domain_record" "dmarc" {
+resource "exoscale_domain_record" "spf" {
   domain      = "${var.dns_zone_name}"
   name        = "@"
   record_type = "TXT"
