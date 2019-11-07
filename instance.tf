@@ -9,6 +9,7 @@ data "template_file" "users" {
 create_user ${username} ${sshkey}
 %{ endfor ~}
 EOF
+  vars = {}
 }
 
 resource "exoscale_compute" "web" {
