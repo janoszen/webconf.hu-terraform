@@ -3,7 +3,7 @@ data "exoscale_compute_template" "ubuntu" {
   name = "Linux Ubuntu 18.04 LTS 64-bit"
 }
 
-resource "template_file" "users" {
+data "template_file" "users" {
   template = <<EOF
 %{ for username,sshkey in var.users ~}
 create_user ${username} ${sshkey}
@@ -39,7 +39,7 @@ function create_user() {
 }
 
 sed -i -e 's/%sudo\s*ALL=(ALL:ALL)\s*ALL/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
-${template_file.users.rendered}
+${data.template_file.users.rendered}
 #endregion
 
 # region Updates
