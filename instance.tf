@@ -131,6 +131,7 @@ EOF
   lifecycle {
     create_before_destroy = true
   }
+  tags = {}
 
   depends_on = [
     "exoscale_security_group.web"
