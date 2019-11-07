@@ -14,7 +14,6 @@ EOF
 resource "exoscale_compute" "web" {
   display_name = var.server_hostname
   template_id = data.exoscale_compute_template.ubuntu.id
-  template = "Linux Ubuntu 18.04 LTS 64-bit"
   size = var.instance_type
   disk_size = var.disk_size
   key_pair = exoscale_ssh_keypair.initial.name
