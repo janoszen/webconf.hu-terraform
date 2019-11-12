@@ -24,6 +24,7 @@ resource "exoscale_compute" "web" {
   security_groups = [
     exoscale_security_group.web.name
   ]
+  ip4 = true
   ip6 = true
 
   user_data = <<EOF
