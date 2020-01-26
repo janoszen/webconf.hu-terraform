@@ -135,6 +135,6 @@ EOF
   tags = {}
 
   depends_on = [
-    "exoscale_security_group.web"
+    exoscale_security_group.web
   ]
 }

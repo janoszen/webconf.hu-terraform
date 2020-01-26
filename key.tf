@@ -30,7 +30,7 @@ resource "tls_cert_request" "web-ecdsa" {
   key_algorithm = tls_private_key.web-ecdsa.algorithm
   private_key_pem = tls_private_key.web-ecdsa.private_key_pem
   dns_names = [
-    "${local.domain_name}"
+    local.domain_name
   ]
   subject {
     common_name  = "${var.server_hostname}.${var.server_domain}"
@@ -62,10 +62,10 @@ resource "tls_cert_request" "web-rsa" {
   key_algorithm = tls_private_key.web-rsa.algorithm
   private_key_pem = tls_private_key.web-rsa.private_key_pem
   dns_names = [
-    "${local.domain_name}"
+    local.domain_name
   ]
   subject {
-    common_name  = "${local.domain_name}"
+    common_name  = local.domain_name
     organization = "Magyar Webert Egyesulet"
     country = "HU"
   }

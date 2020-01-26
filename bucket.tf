@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "backup" {
   }
   lifecycle {
     ignore_changes = [
-      "object_lock_configuration"
+      object_lock_configuration
     ]
   }
 }
